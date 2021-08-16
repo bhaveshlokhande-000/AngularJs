@@ -43,7 +43,7 @@
                 <label for="tel">Phone</label>
                 <input type="text" name="phone" class="form-control" id="tel" formControlName="tel"
                     placeholder="Enter Your Contact Number.">
-                <span *ngIf="tel?.hasError('pattern')">invalid format</span>
+                <span *ngIf="tel?.hasError('pattern')">invalid format(number only of length 10)</span>
                 <span *ngIf="tel?.hasError('required') && tel?.touched">tel required</span>
             </div>
 
