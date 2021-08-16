@@ -1,0 +1,55 @@
+<div class="container">
+    <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
+        <h2 class=" text-center">Employee registration Form</h2>
+        <div class="row jumbotron">
+            <div class="col-sm-6  form-group">
+                <label for="name-f">First Name</label>
+                <input type="text" class="form-control" name="fname" id="name-f" formControlName="fname"
+                    placeholder="Enter your first name.">
+                <span *ngIf="fname?.invalid && fname?.touched ">first name
+                    required</span>
+            </div>
+            <div class="col-sm-6  form-group">
+                <label for="name-l">Last name</label>
+                <input type="text" class="form-control" name="lname" id="name-l" formControlName="lname"
+                    placeholder="Enter your last name.">
+                <span *ngIf="lname?.invalid && lname?.touched">last name required</span>
+            </div>
+            <div class="col-sm-12 form-group">
+                <label for="email">Email</label>
+                <input type="email" class="form-control" name="email" id="email" formControlName="email"
+                    placeholder="Enter your email.">
+                <span *ngIf="email?.hasError('email')">invalid format</span>
+                <span *ngIf="email?.hasError('required') && email?.touched">email required</span>
+            </div>
+            <div class="col-sm-6 form-group">
+                <label for="address-1">Address Line-1</label>
+                <input type="address" class="form-control" name="Locality" id="address-1" formControlName="address1"
+                    placeholder="Locality/House/Street no.">
+                <span *ngIf="address1?.invalid && address1?.touched">address1 required</span>
+            </div>
+            <div class="col-sm-6 form-group">
+                <label for="address-2">Address Line-2</label>
+                <input type="address" class="form-control" name="address" id="address-2" formControlName="address2"
+                    placeholder="Village/City Name.">
+                <span *ngIf="address2?.invalid && address2?.touched">address2 required</span>
+            </div>
+            <div class="col-sm-5 form-group">
+                <label for="dob">Date Of Birth</label>
+                <input type="Date" name="dob" class="form-control" id="dob" formControlName="dob" placeholder="">
+                <span *ngIf="dob?.invalid && dob?.touched">dob required</span>
+            </div>
+            <div class="col-sm-7 form-group">
+                <label for="tel">Phone</label>
+                <input type="text" name="phone" class="form-control" id="tel" formControlName="tel"
+                    placeholder="Enter Your Contact Number.">
+                <span *ngIf="tel?.hasError('pattern')">invalid format(number only)</span>
+                <span *ngIf="tel?.hasError('required') && tel?.touched">tel required</span>
+            </div>
+
+            <div class="ml-3 mt-4 form-group">
+                <button class="btn btn-primary float-right">Submit</button>
+            </div>
+        </div>
+    </form>
+</div>
