@@ -8,6 +8,8 @@ interface CustomObject {
   body: string;
 }
 
+let customObjects: Array<CustomObject> = [];
+
 @Component({
   selector: 'app-table',
   templateUrl: './table.component.html',
@@ -22,8 +24,8 @@ export class TableComponent implements OnInit {
 
   constructor(private service: TableService) {
     this.service.getData().subscribe(data => {
-      this.objects = data as Array<CustomObject>
-      this.collectionSize = this.objects.length
+      customObjects = data as Array<CustomObject>
+      this.collectionSize = customObjects.length
       this.refreshCountries();
     })
   }
@@ -33,9 +35,8 @@ export class TableComponent implements OnInit {
   }
 
   refreshCountries() {
-    this.objects = this.objects.map((obj: CustomObject, i: number) => ({ id: i + 1, ...obj }))
+    this.objects = customObjects.map((obj: CustomObject, i: number) => ({ id: i + 1, ...obj }))
       .slice((this.page - 1) * this.pageSize, (this.page - 1) * this.pageSize + this.pageSize);
   }
 
 }
-
